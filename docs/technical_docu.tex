@@ -1,0 +1,39 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{amsfonts}
+
+
+\title{Technical documentation}
+\author{Martin Münch, Marcel Ouška}
+\date{20. 5. 2014} 
+
+\begin{document}
+\maketitle
+
+\section{Basic structure of assignment}
+
+Code of semestral assignment is structured into several files. Main.c, finddevice.c, functions.c, client.c. Every one of them has header file to it.
+
+Main.c contains main method and some others to control device. 
+
+Client.c manage connection and communication with authorisation server. 
+
+Functions.c is file full of functions, which are needed for controlling device, such as writing on LCD display or reading from keayboard.
+
+Finddevice.c contains methods for finding and connectinc device ti a computer.
+
+
+\section{Preparation of device}
+
+FIrstly, we need to find and connect device. This happens in function named findAddress(), which gradually searches files of devices connected to systems and seeks for our card. Secondly, connection to server ServerName is made by function connectToServer(ServerName) and next we step into infinite control loop of our card.
+
+\section{Main function}
+
+Main part is infinite loop, which constantly reads ID, PIN and then sends data to the authorisation server and than acts on behalf of response from server. One iteration is managed by function lifeCycle(), which firstly reads ID and PIN of the user. Nextly uses functions checkAccess(ID, PIN) and sends data to the server and authorise or don't authorise user according to inserted credentials.
+
+\section{Ending}
+
+You can shut down device at any time, just hold the key QUIT, algorithm jumps to counting cycle and waits until one second pass. If you hold it for one second, it jumps out and end programm.
+
+\end{document}
